@@ -7,10 +7,9 @@ pathos_labels = []
 ethos_labels = []
 logos_labels = []
 i=0
-for filename in os.listdir('v2.0/negative/'):
-    if filename.endswith(".xml"):
-        print('v2.0/negative/' + filename)
-        tree = ET.parse('v2.0/negative/' + filename)
+for dirname in os.listdir('v2.0/'):
+    for filename in os.listdir('v2.0/' + dirname + '/'):
+        tree = ET.parse('v2.0/' + dirname + '/' + filename)
         root = tree.getroot()
         for child in root:
             for val in child:
@@ -27,7 +26,3 @@ for filename in os.listdir('v2.0/negative/'):
                     logos_labels.append(1)
                 else:
                     logos_labels.append(0)
-print(sentences)
-print(pathos_labels)
-print(ethos_labels)
-print(logos_labels)
