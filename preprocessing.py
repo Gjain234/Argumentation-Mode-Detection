@@ -6,7 +6,6 @@ sentences = []
 pathos_labels = []
 ethos_labels = []
 logos_labels = []
-i=0
 for dirname in os.listdir('v2.0/'):
     for filename in os.listdir('v2.0/' + dirname + '/'):
         tree = ET.parse('v2.0/' + dirname + '/' + filename)
