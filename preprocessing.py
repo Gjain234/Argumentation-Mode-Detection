@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
-import numpy as np
 import os
+import re
 
 sentences = []
 pathos_labels = []
@@ -12,16 +12,18 @@ for dirname in os.listdir('v2.0/'):
         root = tree.getroot()
         for child in root:
             for val in child:
-                sentences.append(val.text)
-                if 'pathos' in val.attrib['type']:
-                    pathos_labels.append(1)
-                else:
-                    pathos_labels.append(0)
-                if 'ethos' in val.attrib['type']:
-                    ethos_labels.append(1)
-                else:
-                    ethos_labels.append(0)
-                if 'logos' in val.attrib['type']:
-                    logos_labels.append(1)
-                else:
-                    logos_labels.append(0)
+                if val.tag == 'premise': 
+                    #sentences.append(re.findall('[a-zA-Z]+', val.text.lower()))
+                    sentences.append(val.text)
+                    if 'pathos' in val.attrib['type']:
+                        pathos_labels.append(1)
+                    else:
+                        pathos_labels.append(0)
+                    if 'ethos' in val.attrib['type']:
+                        ethos_labels.append(1)
+                    else:
+                        ethos_labels.append(0)
+                    if 'logos' in val.attrib['type']:
+                        logos_labels.append(1)
+                    else:
+                        logos_labels.append(0)
