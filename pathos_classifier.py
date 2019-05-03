@@ -25,7 +25,8 @@ for i in range(len(sentences)):
         if token in pronoun_set:
             pathos_X[i,0] +=1
     pathos_X[i,1] = abs(sid.polarity_scores(sentences[i])['compound'])
-'''
+
+
 train_samples = int(0.8*len(sentences))
 X_train = pathos_X[:train_samples,:]
 X_test = pathos_X[train_samples:,:]
@@ -39,6 +40,6 @@ x1false = np.take(X_train[:,0],np.where(y_train!=1))
 x2false = np.take(X_train[:,1],np.where(y_train!=1))
 plt.plot(x1false, x2false, 'r^', x1true,x2true, 'go')
 lr = LogisticRegression().fit(X_train,y_train)
+plt.figtext(.6,.03, lr.score(X_test,y_test))
 print(lr.score(X_test,y_test))
 plt.show()
-'''

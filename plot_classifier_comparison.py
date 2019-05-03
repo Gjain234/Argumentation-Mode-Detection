@@ -76,7 +76,7 @@ linearly_separable = (X, y)
  #           linearly_separable
  #           ]
 
-datasets = [(logos_X,logos_Y)]
+datasets = [(pathos_X,pathos_Y)]
 figure = plt.figure(figsize=(27, 9))
 i = 1
 # iterate over datasets

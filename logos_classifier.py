@@ -31,7 +31,7 @@ for i in range(len(sentences)):
 
 
 
-'''
+
 train_samples = int(0.8*len(sentences))
 X_train = logos_X[:train_samples,:]
 X_test = logos_X[train_samples:,:]
@@ -45,6 +45,6 @@ x1false = np.take(X_train[:,0],np.where(y_train!=1))
 x2false = np.take(X_train[:,1],np.where(y_train!=1))
 plt.plot(x1false, x2false, 'r^', x1true,x2true, 'bo')
 lr = LogisticRegression().fit(X_train,y_train)
+plt.figtext(.6,.03, lr.score(X_test,y_test))
 print(lr.score(X_test,y_test))
 plt.show()
-'''
